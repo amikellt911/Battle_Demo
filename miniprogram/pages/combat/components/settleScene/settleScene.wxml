@@ -1,0 +1,64 @@
+<wxs src="./settleScene.wxs" module="utils" />
+
+<view class="top">
+  <!-- 用户信息展示 -->
+  <user-info />
+
+  <!-- 对战输赢结果展示 -->
+  <image wx:if="{{utils.isCombatWin($state.combat)}}" class="face-win" src="./../../../../images/combat-finish-win.png" />
+  <image wx:else class="face-lose" src="./../../../../images/combat-finish-fail.png" />
+
+</view>
+
+<view class="bar">
+  <view class="bar-item">
+    <text class="bar-item__gradeTotal">{{$state.combat.users[0].gradeTotal}}</text>
+    <text wx:if="{{!isShareResult}}" class="bar-item__experience">词力值+{{leftIncExperience}}</text>
+    <text wx:else class="bar-item__experience">对战得分</text>
+  </view>
+  <view class="bar-item">
+    <text class="bar-item__gradeTotal">{{$state.combat.users[1].gradeTotal}}</text>
+    <text wx:if="{{!isShareResult}}" class="bar-item__experience">词力值+{{rightIncExperience}}</text>
+    <text wx:else class="bar-item__experience">对战得分</text>
+  </view>
+</view>
+
+<scroll-view class="words" scroll-y="{{true}}">
+  <image class="words-bg" src="./../../../../images/combat-pk.png" />
+
+  <block wx:for="{{utils.getWordList($state.combat)}}" wx:for-index="index" wx:key="index" wx:for-item="item">
+    <view class="word">
+      <image wx:if="{{item.left}}" class="word-icon" src="./../../../../images/combat-g.png" />
+      <image wx:else class="word-icon" src="./../../../../images/combat-x.png" />
+
+      <text class="word-text">{{item.text}}</text>
+
+      <image wx:if="{{item.right}}" class="word-icon" src="./../../../../images/combat-g.png" />
+      <image wx:else class="word-icon" src="./../../../../images/combat-x.png" />
+    </view>
+  </block>
+</scroll-view>
+
+<view wx:if="{{!isShareResult}}">
+  <!-- 房主创建房间 || 加入已经创建好的房间(由本局的房主创建的) -->
+  <button wx:if="{{$state.combat.isOwner || $state.combat.next}}" catchtap="onCreateCombat" class="button" hover-class="btn-hover">再来一局</button>
+  <button wx:else class="button-disable" disabled>等待对方创房</button>
+
+  <button class="button" hover-class="btn-hover" open-type="share">分享战绩</button>
+
+  <view class="tip">
+    <image class="tip-icon" src="./../../../../images/combat-tip.png" />
+    <text class="tip-text">分享可获得提示卡 * 5</text>
+  </view>
+</view>
+<view wx:else>
+  <button catchtap="onCreateCombat" class="button animated infinite slow pulse" hover-class="btn-hover">创建好友对战</button>
+
+  <button catchtap="onGoHome" class="button" hover-class="btn-hover">返回首页</button>
+
+  <view class="tip">
+    <image class="tip-icon" src="./../../../../images/combat-tip.png" />
+    <text class="tip-text">和 TA 一起 PK 单词很有趣哦</text>
+  </view>
+</view>
+

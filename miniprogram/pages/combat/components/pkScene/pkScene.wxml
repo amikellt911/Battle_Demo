@@ -1,0 +1,71 @@
+<wxs src="./pkScene.wxs" module="utils" />
+
+<view class="top">
+  <!-- 用户信息展示 -->
+  <user-info />
+
+  <!-- 倒计时 -->
+  <text animation="{{countdownAnimation}}" class="count-down">{{$state.combat.countdown > 0 ? $state.combat.countdown : 0}}</text>
+</view>
+
+<view class="pk">
+  <!-- 题目 -->
+  <text class="word">{{$state.combat.wordList[$state.combat.wordsIndex].word}}</text>
+
+  <!-- 选项按钮 -->
+  <view class="options">
+    <block wx:for="{{$state.combat.wordList[$state.combat.wordsIndex].options}}" wx:key="index" wx:for-index="index" wx:for-item="option">
+      <!-- NOTE: 指向选项有动画，背景图无需动画 -->
+      <view class="option shadow-lg" data-index="{{index}}" catchtap="onSelectOption" animation="{{optionsAnimation}}">
+
+        <!-- NOTE: 左侧选择的结果 坑: 用 hidden 在手机上数据变了但不会更新渲染 (从不显示变成显示)-->
+        <view class="option-result__left" wx:if="{{utils.showLeftSelect($state.combat, selectIndex, index)}}">
+          <image wx:if="{{utils.isLeftSelectWrong($state.combat, selectIndex)}}" class="option-result__icon" src="./../../../../images/combat-x.png" />
+          <image wx:if="{{utils.isLeftSelectCorrect($state.combat, selectIndex)}}" class="option-result__icon" src="./../../../../images/combat-g.png" />
+        </view>
+
+        <!-- NOTE: 当本地选择后显示正确答案 (红色标记)，小程序 BUG 不用 wx:if wxs 数据更新执行后 UI 不更新，所以分成了两个标签，唯一区别在于是否增加 option-text__correct 类名 -->
+        <text wx:if="{{utils.showAnswer($state.combat, index)}}" class="option-text one-line-text option-text__correct">{{option}}</text>
+        <text wx:else class="option-text one-line-text">{{option}}</text>
+
+        <!-- NOTE: 右侧选择的结果，坑: 用 hidden 在手机上数据变了但不会更新渲染 (从不显示变成显示)  -->
+        <view class="option-result__right" wx:if="{{utils.showRightSelect($state.combat, selectIndex, index)}}">
+          <image wx:if="{{utils.isRightSelectWrong($state.combat, selectIndex)}}" class="option-result__icon" src="./../../../../images/combat-x.png" />
+          <image wx:if="{{utils.isRightSelectCorrect($state.combat, selectIndex)}}" class="option-result__icon" src="./../../../../images/combat-g.png" />
+        </view>
+      </view>
+    </block>
+
+    <image class="pk-icon" src="./../../../../images/combat-pk.png" />
+  </view>
+
+  <!-- 坑： 使用 utils.calcProgressPercent($state.combat, true) 在 wxml 中调用计算返回的值变了，但是手机端的进度条 UI 不会更新，所以直接在 wxml 中写表达式计算 -->
+  <!-- 左侧分数条 -->
+  <progress class="progress-left" duration="50" border-radius="18rpx" stroke-width="36rpx" percent="{{$state.combat.users[0].gradeTotal / $state.combat.wordList.length}}" activeColor="#7ECDF7" backgroundColor="#F5F5F5" active="true" active-mode="forwards" />
+
+  <!-- 右侧分数条 -->
+  <progress class="progress-right" duration="50" border-radius="18rpx" stroke-width="36rpx" percent="{{$state.combat.users[1].gradeTotal / $state.combat.wordList.length}}" activeColor="#7ECDF7" backgroundColor="#F5F5F5" active="true" active-mode="forwards" />
+
+  <!-- 成绩分数 及 分数动画 -->
+  <view class="grade">
+    <view class="grade-animate__left" wx:if="{{utils.getUserRecordScore($state.combat, true)}}">
+      <image class="grade-animate__icon" src="./../../../../images/combat-pk-getGrade.png" />
+      <text class="grade-animate__text">{{utils.getUserRecordScore($state.combat, true)}}</text>
+    </view>
+
+    <view class="grade-animate__right" wx:if="{{utils.getUserRecordScore($state.combat, false)}}">
+      <text class="grade-animate__text">{{utils.getUserRecordScore($state.combat, false)}}</text>
+      <image class="grade-animate__icon" src="./../../../../images/combat-pk-getGrade.png" />
+    </view>
+
+    <view class="grade-text">
+      <text class="grade-text__left">{{$state.combat.users[0].gradeTotal}}</text>
+      <text class="grade-text__right">{{$state.combat.users[1].gradeTotal}}</text>
+    </view>
+  </view>
+
+  <view class="pk-tip touch" catchtap="onGetTip">
+    <image class="pk-tip__img" mode="widthFix" src="./../../../../images/combat-tip.png" />
+    <text class="pk-tip__title">提示 x {{$state.user.totalTip}}</text>
+  </view>
+</view>

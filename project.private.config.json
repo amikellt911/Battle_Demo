@@ -1,31 +1,73 @@
 {
   "setting": {
-    "compileHotReLoad": true,
-    "urlCheck": true
+    "compileHotReLoad": true
   },
   "condition": {
     "miniprogram": {
       "list": [
         {
-          "name": "首页-快速开始",
-          "pathName": "pages/index/index",
-          "query": ""
+          "name": "创建好友对战房间",
+          "pathName": "pages/combat/combat",
+          "query": "state=create&type=friend",
+          "scene": null
         },
         {
-          "name": "商品列表",
-          "pathName": "pages/goods-list/index",
+          "name": "加入好友创建房间",
+          "pathName": "pages/combat/combat",
+          "query": "id=54ad1eea61cc8652018a1c3305857e88&type=friend&state=ready",
+          "scene": null
+        },
+        {
+          "name": "开始对局调试",
+          "pathName": "pages/combat/combat",
+          "query": "id=5b049cc861da956a03ae865634a49426&debug=true",
+          "scene": null
+        },
+        {
+          "name": "对战结束调试",
+          "pathName": "pages/combat/combat",
+          "query": "id=54ad1eea61e2b034074afbe727bc1247&debug=true",
+          "scene": null
+        },
+        {
+          "name": "随机匹配",
+          "pathName": "pages/combat/combat",
+          "query": "type=random",
+          "scene": null
+        },
+        {
+          "name": "对战结果分享战绩",
+          "pathName": "pages/combat/combat",
+          "query": "id=41ae62ef61f14caa00e9e8c404a32a18&share_result=true",
+          "scene": null
+        },
+        {
+          "name": "每日词汇",
+          "pathName": "pages/learning/learning",
           "query": "",
           "scene": null
         },
         {
-          "name": "云开发示例",
-          "pathName": "pages/examples/index",
+          "name": "生词本",
+          "pathName": "pages/review/review",
           "query": "",
           "scene": null
         },
         {
-          "name": "个人中心",
-          "pathName": "pages/user-center/index",
+          "name": "排行榜",
+          "pathName": "pages/ranking/ranking",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "设置页",
+          "pathName": "pages/setting/setting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "关于",
+          "pathName": "pages/about/about",
           "query": "",
           "scene": null
         }
@@ -33,5 +75,5 @@
     }
   },
   "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-  "projectname": "Battle_Demo"
+  "projectname": "wechat-words-pk-typescript"
 }

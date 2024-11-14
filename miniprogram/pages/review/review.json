@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "word-item": "components/wordItem/wordItem"
+  },
+  "navigationStyle": "default",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "生词本",
+  "backgroundColor": "#f8f8f8"
+}

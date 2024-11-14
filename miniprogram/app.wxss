@@ -1,27 +1,79 @@
-/**app.wxss**/
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-} 
+@import './miniprogram_npm/wxapp-animate/animate.wxss';
 
-button {
-  background: initial;
+/* 按钮阴影 */
+.shadow-lg {
+  box-shadow: 0rpx 4rpx 6rpx 0rpx rgba(0, 102, 204, 0.2);
 }
 
-button:focus{
-  outline: 0;
+/* 主题色按钮点击变色 */
+.btn-hover {
+  background: rgb(131, 203, 241)!important;
 }
 
-button::after{
-  border: none;
+/** 点击放大 10% */
+.touch:active {
+  transform: scale(1.1);
 }
 
+/** 点击放大 1% */
+.touch-s:active {
+  transform: scale(1.01);
+}
 
-page {
-  background: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+/** 点击放大 2% */
+.touch-m:active {
+  transform: scale(1.02);
+}
+
+/* ↓↓↓↓↓↓ 旋转动画，首页设置入口 和 匹配页面公用 ↓↓↓↓↓↓ */
+@keyframes rotate {
+  from {
+    transform-origin: center;
+    transform: rotate(0);
+  }
+
+  to {
+    transform-origin: center;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-reverse {
+  from {
+    transform-origin: center;
+    transform: rotate(0);
+  }
+
+  to {
+    transform-origin: center;
+    transform: rotate(-360deg);
+  }
+}
+
+.rotate-reverse {
+  animation-name: rotate-reverse;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.rotate {
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.time-36s {
+  animation-duration: 36s;
+}
+
+.time-2s {
+  animation-duration: 2s;
+}
+
+/* ↑↑↑↑↑↑ 旋转动画，首页设置入口 和 匹配页面公用 ↑↑↑↑↑↑ */
+
+.one-line-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

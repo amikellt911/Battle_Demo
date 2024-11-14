@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "top-bar": "components/topBar/topBar",
+    "footer-bar": "components/footerBar/footerBar",
+    "problem": "components/problem/problem",
+    "popup": "components/popup/popup"
+  },
+  "navigationStyle": "default",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "",
+  "disableScroll": true
+}

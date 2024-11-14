@@ -1,0 +1,27 @@
+<header><text slot="content" class="header-title">单词天天斗</text></header>
+
+<!-- 用户信息展示 -->
+<user-info />
+
+<!-- 提示卡、单词书选择 -->
+<tool-bar />
+
+<!-- 好友对战、随机匹配、每日词汇、生词本 -->
+<main />
+
+<!-- 排行榜、建议反馈、打赏作者 -->
+<footer />
+
+<!-- 背景、设置入口 -->
+<background />
+
+<!-- 单词书切换选择 -->
+<book-select id="book-select" />
+
+<home-add-tips />
+
+<!-- 加载 -->
+<loading id="loading"/>
+
+<!-- 弹窗 -->
+<toast id="toast" />

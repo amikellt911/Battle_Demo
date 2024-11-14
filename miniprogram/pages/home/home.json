@@ -1,0 +1,12 @@
+{
+  "disableScroll": true,
+  "usingComponents": {
+    "user-info": "components/userInfo/userInfo",
+    "tool-bar": "components/toolBar/toolBar",
+    "main": "components/main/main",
+    "footer": "components/footer/footer",
+    "background": "components/background/background",
+    "book-select": "components/bookSelect/bookSelect",
+    "home-add-tips": "components/homeAddTips/homeAddTips"
+  }
+}

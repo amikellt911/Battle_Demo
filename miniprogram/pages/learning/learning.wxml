@@ -1,0 +1,14 @@
+<top-bar />
+
+<problem wordItem="{{$state.learning.wordList[$state.learning.wordsIndex]}}" bind:loadMoreWords="loadWordsData" />
+
+<footer-bar />
+
+<!-- 加载 -->
+<loading id="loading" />
+
+<!-- 弹窗 -->
+<toast id="toast" />
+
+<!-- 复活、再来一局弹窗 -->
+<popup />

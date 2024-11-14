@@ -1,0 +1,7 @@
+node_modules/
+assets/
+server/
+db/
+delete_db_server.sh
+!cloudfunctions
+!cloudfunctions/server

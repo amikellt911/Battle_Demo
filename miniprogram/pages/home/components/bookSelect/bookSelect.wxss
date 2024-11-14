@@ -1,0 +1,99 @@
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  z-index: 99;
+}
+
+.book-select {
+  position: absolute;
+  width: 100%;
+  border-radius: 24rpx 24rpx 0 0;
+  background-color: #ffffff;
+  bottom: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+.book-select::before,
+.book-select::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 48rpx;
+  z-index: 99;
+  content: '';
+}
+
+.book-select::before {
+  top: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.book-select::after {
+  bottom: 16rpx;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.book-select__scroll {
+  height: 65vh;
+  box-sizing: border-box;
+  padding: 16rpx 0 48rpx 0;
+}
+
+.book {
+  display: flex;
+  width: 100%;
+  height: 202rpx;
+  margin: 32rpx 50rpx;
+}
+
+.book-img {
+  position: relative;
+  height: 202rpx;
+  width: 150rpx;
+}
+
+.book-img:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(transparent 50%,rgba(0,0,0,.05) 100%);
+  pointer-events: none;
+  content: "";
+  display: block;
+  z-index: 1;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400rpx;
+  margin-left: 48rpx;
+  padding: 12rpx 0 0 16rpx;
+}
+
+.book-info__title {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+.book-info__words,
+.book-info__people {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+}
